@@ -138,7 +138,7 @@ def mengecek_produk_dalam_dict (input_nama_kolom_produk,input_nilai_produk):
         if input_nama_kolom_produk == 'Kode Produk':
             for i in dict_data_produk.keys():
                 if i == input_nilai_produk:
-                    tampilan_data_tertentu (input_nama_kolom_produk,input_nilai_produk)
+                    tampilan_data_tertentu (input_nama_kolom_produk,input_nilai_produk)  # 
                     bool_data_tersedia = True
                     break
             if bool_data_tersedia == False:
@@ -157,7 +157,7 @@ def mengecek_produk_dalam_dict (input_nama_kolom_produk,input_nilai_produk):
             break
 
 # function menampilkan data tertentu
-def tampilan_data_tertentu (input_nama_kolom_produk,input_kode_produk):
+def tampilan_data_tertentu (input_nama_kolom_produk,input_value_produk):
     global dict_data_produk
     dict_data_produk = (dict(sorted(dict_data_produk.items())))
     print ('\n================================================================================')
@@ -170,7 +170,7 @@ def tampilan_data_tertentu (input_nama_kolom_produk,input_kode_produk):
         list_hasil=[]
         for i in dict_data_produk.keys():
             list_dummy =[]
-            if i == input_kode_produk:
+            if i == input_value_produk:
                 print ("|"+" "*5 + "{:04d}".format(i)+" "*6+"|",end="")
                 list_dummy.append(i)
                 for j in dict_data_produk[i].keys():
@@ -184,7 +184,7 @@ def tampilan_data_tertentu (input_nama_kolom_produk,input_kode_produk):
         list_hasil=[]
         for i in dict_data_produk.keys():
             list_dummy =[]
-            if dict_data_produk[i][input_nama_kolom_produk] == input_kode_produk:
+            if dict_data_produk[i][input_nama_kolom_produk] == input_value_produk:
                 print ("|"+" "*5 + "{:04d}".format(i)+" "*6+"|",end="")
                 list_dummy.append(i)
                 for j in dict_data_produk[i].keys():
@@ -229,7 +229,7 @@ def menu_2_submenu_1 ():
         input_nama_produk_baru = cek_value_nama_produk ('Masukkan Nama Produk baru : ')
         input_stock_produk_baru = cek_value_stock ('Masukkan Stock Produk baru : ')
         input_stock_satuan_baru = cek_value_satuan ('Masukkan Satuan baru (Bal / Dus / Pcs / Lusin / Pak) :')
-        input_lokasi_satuan_baru = cek_value_lokasi ('Masukkan lokasi produk baru (Gudang A / Gudang B):')
+        input_lokasi_baru = cek_value_lokasi ('Masukkan lokasi produk baru (Gudang A / Gudang B):')
         print ('================================================================================')
         print ("\033[1m|{:^15}|{:^15}|{:^15}|{:^15}|{:^15}|\033[0m".format('Kode Produk','Nama Produk', 'Stock', 'Satuan', 'Lokasi'))
         print ('--------------------------------------------------------------------------------')
@@ -237,7 +237,7 @@ def menu_2_submenu_1 ():
                                                             input_nama_produk_baru, 
                                                             input_stock_produk_baru, 
                                                             input_stock_satuan_baru, 
-                                                            input_lokasi_satuan_baru))
+                                                            input_lokasi_baru))
         print ('--------------------------------------------------------------------------------')
         while True:
             input_pilihan_simpan = input ('\nApakah data baru ini ingin dimasukkan ke database ? (Y/N)').capitalize()
@@ -245,7 +245,7 @@ def menu_2_submenu_1 ():
                 dict_data_produk [input_kode_produk_baru] = {'Nama Produk':input_nama_produk_baru,
                                                         'Stock':input_stock_produk_baru,
                                                         'Satuan':input_stock_satuan_baru,
-                                                        'Lokasi':input_lokasi_satuan_baru}
+                                                        'Lokasi':input_lokasi_baru}
                 print ('\n\033[1mData Baru Tersimpan\033[0m')
                 break
             elif input_pilihan_simpan == 'N':
