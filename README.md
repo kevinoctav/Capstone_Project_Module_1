@@ -12,3 +12,6 @@ Update Data
 
 Menu 4 :
 Delete Data
+
+Menu 5 :
+Exit Program
